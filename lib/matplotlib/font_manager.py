@@ -415,8 +415,8 @@ FontEntry = dataclasses.make_dataclass(
 
     It is used when populating the font lookup dictionary.
     """,
-        '_repr_html_': lambda self: _fontentry_helper_repr_html(self),
-        '_repr_png_': lambda self: _fontentry_helper_repr_png(self),
+        '_repr_html_': _fontentry_helper_repr_html,
+        '_repr_png_': _fontentry_helper_repr_png,
     }
 )
 

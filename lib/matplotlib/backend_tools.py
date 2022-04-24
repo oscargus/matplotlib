@@ -508,7 +508,7 @@ class ToolViewsPositions(ToolBase):
             # Define Home
             self.push_current(figure)
             # Make sure we add a home view for new axes as they're added
-            figure.add_axobserver(lambda fig: self.update_home_views(fig))
+            figure.add_axobserver(self.update_home_views)
 
     def clear(self, figure):
         """Reset the axes stack."""

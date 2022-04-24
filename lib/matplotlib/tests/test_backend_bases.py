@@ -122,7 +122,7 @@ def test_pick():
     fig.text(.5, .5, "hello", ha="center", va="center", picker=True)
     fig.canvas.draw()
     picks = []
-    fig.canvas.mpl_connect("pick_event", lambda event: picks.append(event))
+    fig.canvas.mpl_connect("pick_event", picks.append)
     start_event = MouseEvent(
         "button_press_event", fig.canvas, *fig.transFigure.transform((.5, .5)),
         MouseButton.LEFT)

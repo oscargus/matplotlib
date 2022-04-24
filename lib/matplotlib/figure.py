@@ -2315,9 +2315,9 @@ class Figure(FigureBase):
         self._canvas_callbacks = cbook.CallbackRegistry(
             signals=FigureCanvasBase.events)
         self._button_pick_id = self._canvas_callbacks.connect(
-            'button_press_event', lambda event: self.canvas.pick(event))
+            'button_press_event', self.canvas.pick)
         self._scroll_pick_id = self._canvas_callbacks.connect(
-            'scroll_event', lambda event: self.canvas.pick(event))
+            'scroll_event', self.canvas.pick)
 
         if figsize is None:
             figsize = mpl.rcParams['figure.figsize']
@@ -2971,7 +2971,7 @@ class Figure(FigureBase):
         """Whenever the Axes state change, ``func(self)`` will be called."""
         # Connect a wrapper lambda and not func itself, to avoid it being
         # weakref-collected.
-        self._axobservers.connect("_axes_change_event", lambda arg: func(arg))
+        self._axobservers.connect("_axes_change_event", func)
 
     def savefig(self, fname, *, transparent=None, **kwargs):
         """

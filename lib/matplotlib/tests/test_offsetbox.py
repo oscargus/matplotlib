@@ -213,7 +213,7 @@ def test_picking(child_type, boxcoords):
     ax.add_artist(ab)
 
     calls = []
-    fig.canvas.mpl_connect('pick_event', lambda event: calls.append(event))
+    fig.canvas.mpl_connect('pick_event', calls.append)
 
     # Annotation should be picked by an event occurring at its center.
     if boxcoords == 'axes points':

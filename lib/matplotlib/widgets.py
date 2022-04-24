@@ -224,7 +224,7 @@ class Button(AxesWidget):
 
         Returns a connection id, which can be used to disconnect the callback.
         """
-        return self._observers.connect('clicked', lambda event: func(event))
+        return self._observers.connect('clicked', func)
 
     def disconnect(self, cid):
         """Remove the callback function with connection id *cid*."""
@@ -582,7 +582,7 @@ class Slider(SliderBase):
         int
             Connection id (which can be used to disconnect *func*).
         """
-        return self._observers.connect('changed', lambda val: func(val))
+        return self._observers.connect('changed', func)
 
 
 class RangeSlider(SliderBase):
@@ -949,7 +949,7 @@ class RangeSlider(SliderBase):
         int
             Connection id (which can be used to disconnect *func*).
         """
-        return self._observers.connect('changed', lambda val: func(val))
+        return self._observers.connect('changed', func)
 
 
 class CheckButtons(AxesWidget):
@@ -1096,7 +1096,7 @@ class CheckButtons(AxesWidget):
 
         Returns a connection id, which can be used to disconnect the callback.
         """
-        return self._observers.connect('clicked', lambda text: func(text))
+        return self._observers.connect('clicked', func)
 
     def disconnect(self, cid):
         """Remove the observer with connection id *cid*."""
@@ -1366,7 +1366,7 @@ class TextBox(AxesWidget):
 
         A connection id is returned which can be used to disconnect.
         """
-        return self._observers.connect('change', lambda text: func(text))
+        return self._observers.connect('change', func)
 
     def on_submit(self, func):
         """
@@ -1375,7 +1375,7 @@ class TextBox(AxesWidget):
 
         A connection id is returned which can be used to disconnect.
         """
-        return self._observers.connect('submit', lambda text: func(text))
+        return self._observers.connect('submit', func)
 
     def disconnect(self, cid):
         """Remove the observer with connection id *cid*."""
