@@ -1,0 +1,5 @@
+Passing incorrect hatch patterns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+... now gives a `ValueError`. Valid patterns are only using the characters
+``-+|/\xXoO.*``.

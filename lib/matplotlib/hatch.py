@@ -2,7 +2,6 @@
 
 import numpy as np
 
-from matplotlib import _api
 from matplotlib.path import Path
 
 
@@ -186,13 +185,9 @@ def _validate_hatch_pattern(hatch):
         if invalids:
             valid = ''.join(sorted(valid_hatch_patterns))
             invalids = ''.join(sorted(invalids))
-            _api.warn_deprecated(
-                '3.4',
-                removal='3.7',  # one release after custom hatches (#20690)
-                message=f'hatch must consist of a string of "{valid}" or '
-                        'None, but found the following invalid values '
-                        f'"{invalids}". Passing invalid values is deprecated '
-                        'since %(since)s and will become an error %(removal)s.'
+            raise ValueError(
+                f'hatch must consist of a string of {valid!r} or None, but '
+                f'found the following invalid values {invalids!r}.'
             )
 
 
